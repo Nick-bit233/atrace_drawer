@@ -1,0 +1,78 @@
+# 自定义
+/test.xxx    # 忽略根目录的test.xxx文件
+/test/**/*   # 忽略test目录所有内容
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+ENV/
+
+# Vue/Node
+node_modules/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.DS_Store
+
+# Distribution / packaging
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+
+# Testing
+/test/
+.coverage
+htmlcov/
+test.*
+*.jpg
+*.jpeg
+*.png
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# System Files
+Thumbs.db
