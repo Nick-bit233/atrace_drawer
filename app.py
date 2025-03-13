@@ -12,7 +12,8 @@ DEFAULT_PARAMS = {
     "origin_x": 0.0,
     "origin_y": 0.0,
     "scale": 1.0,
-    "method": "edge",
+    "method": "contour",
+    "mode": "vertical",
     "time_s": 0,
     "time_e": 0
 }
@@ -35,25 +36,24 @@ def handle_image_processing():
             'origin_y': float(request.form.get('origin_y', DEFAULT_PARAMS['origin_y'])),
             'scale': float(request.form.get('scale', DEFAULT_PARAMS['scale'])),
             'time_s': int(request.form.get('time_s', DEFAULT_PARAMS['time_s'])),
-            'time_e': int(request.form.get('time_e', DEFAULT_PARAMS['time_e']))
+            'time_e': int(request.form.get('time_e', DEFAULT_PARAMS['time_e'])),
+            "method": request.form.get('method', DEFAULT_PARAMS['method']),
+            "mode": request.form.get('mode', DEFAULT_PARAMS['mode'])
         }
+
+        instructions = image_processor.process_image(
+            image_data=file.read(),
+            sampling_rate=params['sampling_rate'],
+            offest_x=params['origin_x'],
+            offset_y=params['origin_y'],
+            scale=params['scale'],
+            time_s=params['time_s'],
+            time_e=params['time_e'],
+            method=params['method'],
+            mode=params['mode']
+        )
         
-        # 获取处理方法参数
-        method = request.form.get('method', DEFAULT_PARAMS['method'])
-        
-        # 根据方法选择不同的处理函数
-        if method == 'edge':
-            instructions = image_processor.process_image(
-                image_data=file.read(),
-                **params
-            )
-        elif method == 'thinning':
-            instructions = image_processor.process_image_thinning(
-                image_data=file.read(),
-                **params
-            )
-        else:
-            raise ValueError(f"不支持的处理方法: {method}，可选值为 'edge' 或 'thinning'")
+        #     raise ValueError(f"不支持的处理方法: {method}，可选值为 'contour' 或 'thinning'")
 
         return jsonify({
             "status": "success",

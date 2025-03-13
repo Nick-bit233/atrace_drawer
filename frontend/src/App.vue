@@ -61,8 +61,9 @@ const $toast = useToast()
 // 响应式状态
 const previewImage = ref(null)
 const params = ref({
-  method: 'edge',
-  sampling_rate: 0.05,
+  method: 'contour',
+  mode: "vertical",
+  sampling_rate: 0.005,
   origin_x: 0,
   origin_y: 0,
   scale: 1,

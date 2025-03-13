@@ -143,14 +143,14 @@
     </div>
 
     <!-- 生成方法 -->
-        <div>
+    <div>
       <label class="block text-sm font-medium text-gray-700 mb-2">生成方法</label>
       <div class="flex space-x-4">
         <label class="inline-flex items-center">
           <input
             type="radio"
             v-model="params.method"
-            value="edge"
+            value="contour"
             class="form-radio h-4 w-4 text-blue-600"
           />
           <span class="ml-2 text-sm text-gray-700">边缘轮廓</span>
@@ -163,6 +163,31 @@
             class="form-radio h-4 w-4 text-blue-600"
           />
           <span class="ml-2 text-sm text-gray-700">骨架化</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 显示模式 -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">表示模式</label>
+      <div class="flex space-x-4">
+        <label class="inline-flex items-center">
+          <input
+            type="radio"
+            v-model="params.mode"
+            value="vertical"
+            class="form-radio h-4 w-4 text-blue-600"
+          />
+          <span class="ml-2 text-sm text-gray-700">垂直</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input
+            type="radio"
+            v-model="params.mode"
+            value="timeline"
+            class="form-radio h-4 w-4 text-blue-600"
+          />
+          <span class="ml-2 text-sm text-gray-700">时间轴</span>
         </label>
       </div>
     </div>
@@ -186,11 +211,14 @@ const props = defineProps({
     type: Object,
     required: true,
     default: () => ({
-      method: 'edge',
+      method: 'contour',
+      mode: 'vertical',
       sampling_rate: 0.01,
       origin_x: 0,
       origin_y: 0,
-      scale: 1
+      scale: 1,
+      time_s: 0,
+      time_e: 0
     })
   },
   processing: {
