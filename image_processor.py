@@ -135,6 +135,8 @@ def process_image(image_data,
                 # 如果t1_trans大于t2_trans，交换它们的值，保证trace的起始时间小于结束时间
                 if t1_trans > t2_trans:
                     t1_trans, t2_trans = t2_trans, t1_trans
+                    # 同时，也要交换x1_trans和x2_trans的值
+                    x1_trans, x2_trans = x2_trans, x1_trans
                 
                 instructions.append(
                     f"arc({t1_trans},{t2_trans},{x1_trans:.3f},{x2_trans:.3f},s,{offset_y:.3f},{offset_y:.3f},0,none,true);"

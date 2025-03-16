@@ -2,7 +2,7 @@
 
 后端依赖：
 ```
-pip install flask opencv-python numpy
+pip install flask flask_cors opencv-python opencv-contrib-python numpy
 ```
 
 相关代码施工中...
